@@ -1,0 +1,1382 @@
+#!/bin/sh
+[ -e tests.sh ] && . ./tests.sh || . ../tests.sh
+
+NAME='pif invalid instruction'
+FILE=../bins/elf/mentalminer
+ARGS='-A -B 0x555555554000'
+CMDS='
+e asm.functions = false
+e asm.flags = false
+e asm.comments = false
+e asm.calls = false
+pif @sym.parse
+'
+EXPECT='push rbp
+mov rbp, rsp
+sub rsp, 0x1080
+movabs rsi, 0x390
+lea rax, [rbp - 0xd90]
+mov qword [rbp - 0x18], rdi
+add rax, 0x2e8
+mov rdi, rax
+call sym.imp.bzero
+movabs rsi, 1
+movabs rdx, 0x2a8
+lea rax, [rbp - 0xd90]
+add rax, 0x2e8
+mov rcx, qword [rbp - 0x18]
+mov rdi, rax
+call sym.imp.fread
+mov qword [rbp - 0x10], rax
+mov dword [rbp - 0xdcc], 0x31b00431
+mov eax, dword [rbp - 0xdcc]
+mov ecx, eax
+sub ecx, 0x8677e367
+mov dword [rbp - 0xdd0], eax
+mov dword [rbp - 0xdd4], ecx
+jg 0x5555555560ea
+jmp 0x5555555560ce
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x833e1e9a
+mov dword [rbp - 0xdd8], eax
+je 0x555555557e17
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x8858d701
+mov dword [rbp - 0xddc], eax
+jg 0x555555556122
+jmp 0x555555556106
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x8677e368
+mov dword [rbp - 0xde0], eax
+je 0x555555557a31
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x8c975027
+mov dword [rbp - 0xde4], eax
+jg 0x55555555615a
+jmp 0x55555555613e
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x8858d702
+mov dword [rbp - 0xde8], eax
+je 0x555555557b28
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x7ed82ece
+mov dword [rbp - 0xdec], eax
+jg 0x55555555703a
+jmp 0x555555556176
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x7d2687a6
+mov dword [rbp - 0xdf0], eax
+jg 0x55555555701e
+jmp 0x555555556192
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x7be270c4
+mov dword [rbp - 0xdf4], eax
+jg 0x555555557002
+jmp 0x5555555561ae
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x8cf6b52c
+mov dword [rbp - 0xdf8], eax
+jg 0x5555555561e6
+jmp 0x5555555561ca
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x8c975028
+mov dword [rbp - 0xdfc], eax
+je 0x555555557b60
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x8f394b96
+mov dword [rbp - 0xe00], eax
+jg 0x55555555621e
+jmp 0x555555556202
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x8cf6b52d
+mov dword [rbp - 0xe04], eax
+je 0x5555555571ca
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xa2449c9e
+mov dword [rbp - 0xe08], eax
+jg 0x555555556256
+jmp 0x55555555623a
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x8f394b97
+mov dword [rbp - 0xe0c], eax
+je 0x555555557c44
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xa60b7123
+mov dword [rbp - 0xe10], eax
+jg 0x55555555628e
+jmp 0x555555556272
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xa2449c9f
+mov dword [rbp - 0xe14], eax
+je 0x555555557c67
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xa6559cf2
+mov dword [rbp - 0xe18], eax
+jg 0x5555555562c6
+jmp 0x5555555562aa
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xa60b7124
+mov dword [rbp - 0xe1c], eax
+je 0x5555555571f2
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xa8c2447f
+mov dword [rbp - 0xe20], eax
+jg 0x5555555562fe
+jmp 0x5555555562e2
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xa6559cf3
+mov dword [rbp - 0xe24], eax
+je 0x555555557ba6
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xae2ec8fd
+mov dword [rbp - 0xe28], eax
+jg 0x555555556336
+jmp 0x55555555631a
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xa8c24480
+mov dword [rbp - 0xe2c], eax
+je 0x555555557bdb
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xb2993f0e
+mov dword [rbp - 0xe30], eax
+jg 0x55555555636e
+jmp 0x555555556352
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xae2ec8fe
+mov dword [rbp - 0xe34], eax
+je 0x55555555768e
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xb57e5efc
+mov dword [rbp - 0xe38], eax
+jg 0x5555555563a6
+jmp 0x55555555638a
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xb2993f0f
+mov dword [rbp - 0xe3c], eax
+je 0x555555557b83
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xb692ad60
+mov dword [rbp - 0xe40], eax
+jg 0x5555555563de
+jmp 0x5555555563c2
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xb57e5efd
+mov dword [rbp - 0xe44], eax
+je 0x555555557c9c
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xbdb72529
+mov dword [rbp - 0xe48], eax
+jg 0x555555556416
+jmp 0x5555555563fa
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xb692ad61
+mov dword [rbp - 0xe4c], eax
+je 0x5555555579b7
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xbe581908
+mov dword [rbp - 0xe50], eax
+jg 0x55555555644e
+jmp 0x555555556432
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xbdb7252a
+mov dword [rbp - 0xe54], eax
+je 0x555555557b0a
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xc5e4f5e0
+mov dword [rbp - 0xe58], eax
+jg 0x555555556486
+jmp 0x55555555646a
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xbe581909
+mov dword [rbp - 0xe5c], eax
+je 0x5555555572ba
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xc80a568e
+mov dword [rbp - 0xe60], eax
+jg 0x5555555564be
+jmp 0x5555555564a2
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xc5e4f5e1
+mov dword [rbp - 0xe64], eax
+je 0x55555555721a
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xc8f34af9
+mov dword [rbp - 0xe68], eax
+jg 0x5555555564f6
+jmp 0x5555555564da
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xc80a568f
+mov dword [rbp - 0xe6c], eax
+je 0x5555555570c9
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xca810e1d
+mov dword [rbp - 0xe70], eax
+jg 0x55555555652e
+jmp 0x555555556512
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xc8f34afa
+mov dword [rbp - 0xe74], eax
+je 0x5555555577d7
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xcae38df7
+mov dword [rbp - 0xe78], eax
+jg 0x555555556566
+jmp 0x55555555654a
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xca810e1e
+mov dword [rbp - 0xe7c], eax
+je 0x555555557622
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xcd321c4f
+mov dword [rbp - 0xe80], eax
+jg 0x55555555659e
+jmp 0x555555556582
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xcae38df8
+mov dword [rbp - 0xe84], eax
+je 0x555555557379
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xd2c1c47f
+mov dword [rbp - 0xe88], eax
+jg 0x5555555565d6
+jmp 0x5555555565ba
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xcd321c50
+mov dword [rbp - 0xe8c], eax
+je 0x555555557532
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xd771f3fe
+mov dword [rbp - 0xe90], eax
+jg 0x55555555660e
+jmp 0x5555555565f2
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xd2c1c480
+mov dword [rbp - 0xe94], eax
+je 0x5555555576b6
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xd81a2194
+mov dword [rbp - 0xe98], eax
+jg 0x555555556646
+jmp 0x55555555662a
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xd771f3ff
+mov dword [rbp - 0xe9c], eax
+je 0x5555555571a2
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xdf57e5d7
+mov dword [rbp - 0xea0], eax
+jg 0x55555555667e
+jmp 0x555555556662
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xd81a2195
+mov dword [rbp - 0xea4], eax
+je 0x55555555708b
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xe1c636cf
+mov dword [rbp - 0xea8], eax
+jg 0x5555555566b6
+jmp 0x55555555669a
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xdf57e5d8
+mov dword [rbp - 0xeac], eax
+je 0x555555557913
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xe3e5921a
+mov dword [rbp - 0xeb0], eax
+jg 0x5555555566ee
+jmp 0x5555555566d2
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xe1c636d0
+mov dword [rbp - 0xeb4], eax
+je 0x555555557242
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x79757876
+mov dword [rbp - 0xeb8], eax
+jg 0x555555556fe6
+jmp 0x55555555670a
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x7959534e
+mov dword [rbp - 0xebc], eax
+jg 0x555555556fca
+jmp 0x555555556726
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x6b916866
+mov dword [rbp - 0xec0], eax
+jg 0x555555556fae
+jmp 0x555555556742
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x646e80df
+mov dword [rbp - 0xec4], eax
+jg 0x555555556f92
+jmp 0x55555555675e
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x634174d7
+mov dword [rbp - 0xec8], eax
+jg 0x555555556f76
+jmp 0x55555555677a
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x62c5ca9e
+mov dword [rbp - 0xecc], eax
+jg 0x555555556f5a
+jmp 0x555555556796
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x5ff8b345
+mov dword [rbp - 0xed0], eax
+jg 0x555555556f3e
+jmp 0x5555555567b2
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x5e8b143f
+mov dword [rbp - 0xed4], eax
+jg 0x555555556f22
+jmp 0x5555555567ce
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x5bedbf08
+mov dword [rbp - 0xed8], eax
+jg 0x555555556f06
+jmp 0x5555555567ea
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x5a992627
+mov dword [rbp - 0xedc], eax
+jg 0x555555556eea
+jmp 0x555555556806
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x523de786
+mov dword [rbp - 0xee0], eax
+jg 0x555555556ece
+jmp 0x555555556822
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x4d897383
+mov dword [rbp - 0xee4], eax
+jg 0x555555556eb2
+jmp 0x55555555683e
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x4a4a9d83
+mov dword [rbp - 0xee8], eax
+jg 0x555555556e96
+jmp 0x55555555685a
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x428d2105
+mov dword [rbp - 0xeec], eax
+jg 0x555555556e7a
+jmp 0x555555556876
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x4263a401
+mov dword [rbp - 0xef0], eax
+jg 0x555555556e5e
+jmp 0x555555556892
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x411285f7
+mov dword [rbp - 0xef4], eax
+jg 0x555555556e42
+jmp 0x5555555568ae
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x3f81539d
+mov dword [rbp - 0xef8], eax
+jg 0x555555556e26
+jmp 0x5555555568ca
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x37ab9aa1
+mov dword [rbp - 0xefc], eax
+jg 0x555555556e0a
+jmp 0x5555555568e6
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x3354bc78
+mov dword [rbp - 0xf00], eax
+jg 0x555555556dee
+jmp 0x555555556902
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x31b00430
+mov dword [rbp - 0xf04], eax
+jg 0x555555556dd2
+jmp 0x55555555691e
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x2e9137f9
+mov dword [rbp - 0xf08], eax
+jg 0x555555556db6
+jmp 0x55555555693a
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xe3fa030b
+mov dword [rbp - 0xf0c], eax
+jg 0x555555556972
+jmp 0x555555556956
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xe3e5921b
+mov dword [rbp - 0xf10], eax
+je 0x55555555726a
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xe8071279
+mov dword [rbp - 0xf14], eax
+jg 0x5555555569aa
+jmp 0x55555555698e
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xe3fa030c
+mov dword [rbp - 0xf18], eax
+je 0x555555557613
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xeaf0a3e0
+mov dword [rbp - 0xf1c], eax
+jg 0x5555555569e2
+jmp 0x5555555569c6
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xe807127a
+mov dword [rbp - 0xf20], eax
+je 0x5555555574a8
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xebd3c76b
+mov dword [rbp - 0xf24], eax
+jg 0x555555556a1a
+jmp 0x5555555569fe
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xeaf0a3e1
+mov dword [rbp - 0xf28], eax
+je 0x555555557cc9
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xf43db061
+mov dword [rbp - 0xf2c], eax
+jg 0x555555556a52
+jmp 0x555555556a36
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xebd3c76c
+mov dword [rbp - 0xf30], eax
+je 0x55555555767f
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xf7b79bf4
+mov dword [rbp - 0xf34], eax
+jg 0x555555556a8a
+jmp 0x555555556a6e
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xf43db062
+mov dword [rbp - 0xf38], eax
+je 0x5555555574d5
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xfaeccd10
+mov dword [rbp - 0xf3c], eax
+jg 0x555555556ac2
+jmp 0x555555556aa6
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xf7b79bf5
+mov dword [rbp - 0xf40], eax
+je 0x555555557d86
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xfb369ea5
+mov dword [rbp - 0xf44], eax
+jg 0x555555556afa
+jmp 0x555555556ade
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xfaeccd11
+mov dword [rbp - 0xf48], eax
+je 0x55555555774d
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xfbc44fef
+mov dword [rbp - 0xf4c], eax
+jg 0x555555556b32
+jmp 0x555555556b16
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xfb369ea6
+mov dword [rbp - 0xf50], eax
+je 0x555555557153
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x8ca7eca
+mov dword [rbp - 0xf54], eax
+jg 0x555555556b6a
+jmp 0x555555556b4e
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xfbc44ff0
+mov dword [rbp - 0xf58], eax
+je 0x5555555573f4
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xa7ecc51
+mov dword [rbp - 0xf5c], eax
+jg 0x555555556ba2
+jmp 0x555555556b86
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x8ca7ecb
+mov dword [rbp - 0xf60], eax
+je 0x555555557541
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xac6bf70
+mov dword [rbp - 0xf64], eax
+jg 0x555555556bda
+jmp 0x555555556bbe
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xa7ecc52
+mov dword [rbp - 0xf68], eax
+je 0x555555557292
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xeed9b51
+mov dword [rbp - 0xf6c], eax
+jg 0x555555556c12
+jmp 0x555555556bf6
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xac6bf71
+mov dword [rbp - 0xf70], eax
+je 0x555555557162
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x10632c06
+mov dword [rbp - 0xf74], eax
+jg 0x555555556c4a
+jmp 0x555555556c2e
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0xeed9b52
+mov dword [rbp - 0xf78], eax
+je 0x55555555742b
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x13e335fb
+mov dword [rbp - 0xf7c], eax
+jg 0x555555556c82
+jmp 0x555555556c66
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x10632c07
+mov dword [rbp - 0xf80], eax
+je 0x5555555570f6
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x20ba543d
+mov dword [rbp - 0xf84], eax
+jg 0x555555556cba
+jmp 0x555555556c9e
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x13e335fc
+mov dword [rbp - 0xf88], eax
+je 0x55555555743a
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x278362fd
+mov dword [rbp - 0xf8c], eax
+jg 0x555555556cf2
+jmp 0x555555556cd6
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x20ba543e
+mov dword [rbp - 0xf90], eax
+je 0x555555557d2e
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x27beeef1
+mov dword [rbp - 0xf94], eax
+jg 0x555555556d2a
+jmp 0x555555556d0e
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x278362fe
+mov dword [rbp - 0xf98], eax
+je 0x5555555575e1
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x2af2177d
+mov dword [rbp - 0xf9c], eax
+jg 0x555555556d62
+jmp 0x555555556d46
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x27beeef2
+mov dword [rbp - 0xfa0], eax
+je 0x5555555579a8
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x2af2177e
+mov dword [rbp - 0xfa4], eax
+je 0x555555557e3a
+jmp 0x555555556d7e
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x2db3a2b5
+mov dword [rbp - 0xfa8], eax
+je 0x555555557d51
+jmp 0x555555556d9a
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x2dbfd4e2
+mov dword [rbp - 0xfac], eax
+je 0x55555555709a
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x2e9137fa
+mov dword [rbp - 0xfb0], eax
+je 0x555555557b19
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x31b00431
+mov dword [rbp - 0xfb4], eax
+je 0x55555555705b
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x3354bc79
+mov dword [rbp - 0xfb8], eax
+je 0x555555557936
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x37ab9aa2
+mov dword [rbp - 0xfbc], eax
+je 0x555555557c08
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x3f81539e
+mov dword [rbp - 0xfc0], eax
+je 0x5555555576c5
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x411285f8
+mov dword [rbp - 0xfc4], eax
+je 0x555555557388
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x4263a402
+mov dword [rbp - 0xfc8], eax
+je 0x555555557945
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x428d2106
+mov dword [rbp - 0xfcc], eax
+je 0x555555557a5e
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x4a4a9d84
+mov dword [rbp - 0xfd0], eax
+je 0x5555555572c9
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x4d897384
+mov dword [rbp - 0xfd4], eax
+je 0x5555555575f0
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x523de787
+mov dword [rbp - 0xfd8], eax
+je 0x555555557403
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x5a992628
+mov dword [rbp - 0xfdc], eax
+je 0x55555555777a
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x5bedbf09
+mov dword [rbp - 0xfe0], eax
+je 0x555555557904
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x5e8b1440
+mov dword [rbp - 0xfe4], eax
+je 0x555555557ae7
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x5ff8b346
+mov dword [rbp - 0xfe8], eax
+je 0x5555555578f5
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x62c5ca9f
+mov dword [rbp - 0xfec], eax
+je 0x55555555717a
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x634174d8
+mov dword [rbp - 0xff0], eax
+je 0x555555557e54
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x646e80e0
+mov dword [rbp - 0xff4], eax
+je 0x555555557ad8
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x6b916867
+mov dword [rbp - 0xff8], eax
+je 0x5555555577e6
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x7959534f
+mov dword [rbp - 0xffc], eax
+je 0x555555557397
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x79757877
+mov dword [rbp - 0x1000], eax
+je 0x5555555575d2
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x7be270c5
+mov dword [rbp - 0x1004], eax
+je 0x555555557db3
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x7d2687a7
+mov dword [rbp - 0x1008], eax
+je 0x555555557ac9
+jmp 0x555555557056
+mov eax, dword [rbp - 0xdd0]
+sub eax, 0x7ed82ecf
+mov dword [rbp - 0x100c], eax
+je 0x555555557b51
+jmp 0x555555557056
+jmp 0x555555557e72
+mov eax, 0xd81a2195
+mov ecx, 0x2dbfd4e2
+movabs rdx, 0x2a8
+mov rsi, qword [rbp - 0x10]
+cmp rdx, rsi
+setne dil
+test dil, dil
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x634174d8
+jmp 0x555555557e72
+lea rax, [rbp - 0xd90]
+add rax, 0x2e8
+mov rdi, rax
+nop
+nop
+nop
+nop
+nop
+mov qword [rbp - 0xd98], 0
+mov dword [rbp - 0xdcc], 0xc80a568f
+jmp 0x555555557e72
+mov eax, 0x10632c07
+mov ecx, 0xb2993f0f
+mov rdx, qword [rbp - 0xd98]
+cmp rdx, qword [rbp - 0xa00]
+setb sil
+test sil, sil
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+movabs rsi, 1
+movabs rdx, 4
+lea rax, [rbp - 0xd90]
+add rax, 0x838
+mov rcx, qword [rbp - 0x18]
+mov rdi, rax
+call sym.imp.fread
+mov r8d, 0xfb369ea6
+mov r9d, 0xac6bf71
+movabs rcx, 4
+cmp rcx, rax
+setne r10b
+test r10b, r10b
+cmove r8d, r9d
+mov dword [rbp - 0xdcc], r8d
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x634174d8
+jmp 0x555555557e72
+mov eax, dword [rbp - 0x558]
+mov dword [rbp - 4], eax
+mov dword [rbp - 0xdcc], 0x62c5ca9f
+jmp 0x555555557e72
+mov eax, 0xc5e4f5e1
+mov ecx, 0xd771f3ff
+mov edx, dword [rbp - 4]
+cmp edx, 0xa8a0d2
+setl sil
+test sil, sil
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+mov eax, 0xa60b7124
+mov ecx, 0x8cf6b52d
+mov edx, dword [rbp - 4]
+cmp edx, 0xd4a1fd
+setl sil
+test sil, sil
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+mov eax, 0x4263a402
+mov ecx, 0x2e9137fa
+mov edx, dword [rbp - 4]
+cmp edx, 0xd4a1fd
+sete sil
+test sil, sil
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+mov eax, 0xa7ecc52
+mov ecx, 0x2e9137fa
+mov edx, dword [rbp - 4]
+cmp edx, 0xa8a0d2
+sete sil
+test sil, sil
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+mov eax, 0xe3e5921b
+mov ecx, 0xe1c636d0
+mov edx, dword [rbp - 4]
+cmp edx, 0x5441fb
+setl sil
+test sil, sil
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+mov eax, 0xca810e1e
+mov ecx, 0x2e9137fa
+mov edx, dword [rbp - 4]
+cmp edx, 0x5441fb
+sete sil
+test sil, sil
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+mov eax, 0x7959534f
+mov ecx, 0x2e9137fa
+mov edx, dword [rbp - 4]
+cmp edx, 0x3d2b39
+sete sil
+test sil, sil
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+mov eax, 0xbe581909
+mov ecx, 0x4a4a9d84
+cmp qword [rbp - 0x790], 0
+setne dl
+test dl, dl
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x634174d8
+jmp 0x555555557e72
+movabs rdi, 0x90
+call sym.operatornew
+movabs rsi, 1
+movabs rdi, 0x90
+mov ecx, 0
+mov rdx, rax
+mov qword [rbp - 0x1018], rdi
+mov rdi, rdx
+mov qword [rbp - 0x1020], rsi
+mov esi, ecx
+mov rdx, qword [rbp - 0x1018]
+mov qword [rbp - 0x1028], rax
+call sym.imp.memset
+mov rax, qword [rbp - 0x1028]
+mov qword [rbp - 0x790], rax
+mov rdx, qword [rbp - 0x790]
+mov rcx, qword [rbp - 0x18]
+mov rdi, rdx
+mov rsi, qword [rbp - 0x1020]
+mov rdx, qword [rbp - 0x1018]
+call sym.imp.fread
+mov r8d, 0xcae38df8
+mov r9d, 0x411285f8
+movabs rcx, 0x90
+cmp rcx, rax
+setne r10b
+test r10b, r10b
+cmove r8d, r9d
+mov dword [rbp - 0xdcc], r8d
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x634174d8
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x7ed82ecf
+jmp 0x555555557e72
+movabs rsi, 1
+movabs rdx, 0xb8
+lea rax, [rbp - 0xd90]
+add rax, 0x678
+mov rcx, qword [rbp - 0x18]
+mov rdi, rax
+call sym.imp.fread
+mov r8d, 0xfbc44ff0
+mov r9d, 0x523de787
+movabs rcx, 0xb8
+cmp rcx, rax
+setne r10b
+test r10b, r10b
+cmove r8d, r9d
+mov dword [rbp - 0xdcc], r8d
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x634174d8
+jmp 0x555555557e72
+mov eax, 0xeed9b52
+mov ecx, 0x13e335fc
+cmp qword [rbp - 0x718], 0xa
+seta dl
+test dl, dl
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x634174d8
+jmp 0x555555557e72
+movabs rax, 0xffffffffffffffff
+mov rcx, qword [rbp - 0x718]
+mov qword [rbp - 0x788], rcx
+mov rcx, qword [rbp - 0x788]
+mov edx, 8
+mov esi, edx
+mov qword [rbp - 0x1030], rax
+mov rax, rcx
+mul rsi
+seto dil
+test dil, dil
+mov rcx, qword [rbp - 0x1030]
+cmove rcx, rax
+mov rdi, rcx
+call sym.operatornew__
+mov qword [rbp - 0x778], rax
+mov qword [rbp - 0xda0], 0
+mov dword [rbp - 0xdcc], 0xe807127a
+jmp 0x555555557e72
+mov eax, 0xf43db062
+mov ecx, 0xe3fa030c
+mov rdx, qword [rbp - 0xda0]
+cmp rdx, qword [rbp - 0x788]
+setb sil
+test sil, sil
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+movabs rsi, 1
+movabs rdx, 0x30
+lea rax, [rbp - 0xd90]
+add rax, 0x9c8
+mov rcx, qword [rbp - 0x18]
+mov rdi, rax
+call sym.imp.fread
+mov r8d, 0xcd321c50
+mov r9d, 0x8ca7ecb
+movabs rcx, 0x30
+cmp rcx, rax
+setne r10b
+test r10b, r10b
+cmove r8d, r9d
+mov dword [rbp - 0xdcc], r8d
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x634174d8
+jmp 0x555555557e72
+movabs rsi, 1
+mov rax, qword [rbp - 0x3c0]
+add rax, 0xf
+and rax, 0xfffffffffffffff0
+mov rcx, rsp
+sub rcx, rax
+mov rsp, rcx
+mov rax, qword [rbp - 0xda0]
+mov rdx, qword [rbp - 0x778]
+mov qword [rdx + rax*8], rcx
+mov rax, qword [rbp - 0x3c0]
+mov rcx, qword [rbp - 0xda0]
+mov rdx, qword [rbp - 0x778]
+mov rdi, qword [rdx + rcx*8]
+mov rdx, qword [rbp - 0x3c0]
+mov rcx, qword [rbp - 0x18]
+mov qword [rbp - 0x1038], rax
+call sym.imp.fread
+mov r8d, 0x79757877
+mov r9d, 0x278362fe
+mov rcx, qword [rbp - 0x1038]
+cmp rcx, rax
+setne r10b
+test r10b, r10b
+cmove r8d, r9d
+mov dword [rbp - 0xdcc], r8d
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x634174d8
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x4d897384
+jmp 0x555555557e72
+mov rax, qword [rbp - 0xda0]
+add rax, 1
+mov qword [rbp - 0xda0], rax
+mov dword [rbp - 0xdcc], 0xe807127a
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x7ed82ecf
+jmp 0x555555557e72
+movabs rsi, 1
+movabs rdx, 0x130
+lea rax, [rbp - 0xd90]
+add rax, 0x840
+mov rcx, qword [rbp - 0x18]
+mov rdi, rax
+call sym.imp.fread
+mov r8d, 0xebd3c76c
+mov r9d, 0xae2ec8fe
+movabs rcx, 0x130
+cmp rcx, rax
+setne r10b
+test r10b, r10b
+cmove r8d, r9d
+mov dword [rbp - 0xdcc], r8d
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x634174d8
+jmp 0x555555557e72
+mov eax, 0xd2c1c480
+mov ecx, 0x3f81539e
+cmp qword [rbp - 0x490], 0xa
+seta dl
+test dl, dl
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x634174d8
+jmp 0x555555557e72
+movabs rax, 0xffffffffffffffff
+mov rcx, qword [rbp - 0x490]
+mov qword [rbp - 0x800], rcx
+mov rcx, qword [rbp - 0x800]
+mov edx, 0x120
+mov esi, edx
+mov qword [rbp - 0x1040], rax
+mov rax, rcx
+mul rsi
+seto dil
+test dil, dil
+mov rcx, qword [rbp - 0x1040]
+cmove rcx, rax
+mov rdi, rcx
+call sym.operatornew__
+mov qword [rbp - 0x780], rax
+mov rax, qword [rbp - 0x780]
+imul rsi, qword [rbp - 0x800], 0x120
+mov rdi, rax
+call sym.imp.bzero
+mov qword [rbp - 0xda8], 0
+mov dword [rbp - 0xdcc], 0xfaeccd11
+jmp 0x555555557e72
+mov eax, 0x5a992628
+mov ecx, 0x3354bc79
+mov rdx, qword [rbp - 0xda8]
+cmp rdx, qword [rbp - 0x800]
+setb sil
+test sil, sil
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+movabs rsi, 1
+movabs rdx, 0xb0
+lea rax, [rbp - 0xd90]
+add rax, 0x788
+mov rcx, qword [rbp - 0x18]
+mov rdi, rax
+call sym.imp.fread
+mov r8d, 0xc8f34afa
+mov r9d, 0x6b916867
+movabs rcx, 0xb0
+cmp rcx, rax
+setne r10b
+test r10b, r10b
+cmove r8d, r9d
+mov dword [rbp - 0xdcc], r8d
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x634174d8
+jmp 0x555555557e72
+mov rax, qword [rbp - 0x5d0]
+mov rcx, qword [rbp - 0xda8]
+mov rdx, qword [rbp - 0x780]
+imul rcx, rcx, 0x120
+add rdx, rcx
+mov qword [rdx + 0x48], rax
+mov rax, qword [rbp - 0x560]
+mov rcx, qword [rbp - 0xda8]
+mov rdx, qword [rbp - 0x780]
+imul rcx, rcx, 0x120
+add rdx, rcx
+mov qword [rdx + 0xa8], rax
+mov rax, qword [rbp - 0x5d0]
+imul rax, qword [rbp - 0x560]
+imul rdi, rax, 3
+call sym.operatornew__
+movabs rsi, 1
+mov rcx, qword [rbp - 0xda8]
+mov rdx, qword [rbp - 0x780]
+imul rcx, rcx, 0x120
+add rdx, rcx
+mov qword [rdx + 0x50], rax
+mov rax, qword [rbp - 0x5d0]
+imul rax, qword [rbp - 0x560]
+imul rax, rax, 3
+mov rcx, qword [rbp - 0xda8]
+mov rdx, qword [rbp - 0x780]
+imul rcx, rcx, 0x120
+add rdx, rcx
+mov rdi, qword [rdx + 0x50]
+mov rcx, qword [rbp - 0x5d0]
+imul rcx, qword [rbp - 0x560]
+imul rdx, rcx, 3
+mov rcx, qword [rbp - 0x18]
+mov qword [rbp - 0x1048], rax
+call sym.imp.fread
+mov r8d, 0x5ff8b346
+mov r9d, 0x5bedbf09
+mov rcx, qword [rbp - 0x1048]
+cmp rcx, rax
+setne r10b
+test r10b, r10b
+cmove r8d, r9d
+mov dword [rbp - 0xdcc], r8d
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x634174d8
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0xdf57e5d8
+jmp 0x555555557e72
+mov rax, qword [rbp - 0xda8]
+add rax, 1
+mov qword [rbp - 0xda8], rax
+mov dword [rbp - 0xdcc], 0xfaeccd11
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x7ed82ecf
+jmp 0x555555557e72
+movabs rsi, 1
+movabs rdx, 8
+lea rax, [rbp - 0xd90]
+add rax, 0x2e8
+add rax, 0x338
+mov rcx, qword [rbp - 0x18]
+mov rdi, rax
+call sym.imp.fread
+mov r8d, 0x27beeef2
+mov r9d, 0xb692ad61
+movabs rcx, 8
+cmp rcx, rax
+setne r10b
+test r10b, r10b
+cmove r8d, r9d
+mov dword [rbp - 0xdcc], r8d
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x634174d8
+jmp 0x555555557e72
+movabs rax, 0xffffffffffffffff
+mov rcx, qword [rbp - 0x770]
+mov edx, 0x552
+mov esi, edx
+mov qword [rbp - 0x1050], rax
+mov rax, rcx
+mul rsi
+seto dil
+test dil, dil
+mov rcx, qword [rbp - 0x1050]
+cmove rcx, rax
+mov rdi, rcx
+call sym.operatornew__
+mov qword [rbp - section_end..symtab], rax
+mov rax, qword [rbp - section_end..symtab]
+imul rsi, qword [rbp - 0x770], 0x552
+mov rdi, rax
+call sym.imp.bzero
+mov qword [rbp - 0xdb0], 0
+mov dword [rbp - 0xdcc], 0x8677e368
+jmp 0x555555557e72
+mov eax, 0x428d2106
+mov ecx, 0xbdb7252a
+mov rdx, qword [rbp - 0xdb0]
+cmp rdx, qword [rbp - 0x770]
+setb sil
+test sil, sil
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+movabs rsi, 1
+movabs rdx, 0x552
+mov rax, qword [rbp - 0xdb0]
+mov rcx, qword [rbp - section_end..symtab]
+imul rax, rax, 0x552
+add rcx, rax
+mov rax, qword [rbp - 0x18]
+mov rdi, rcx
+mov rcx, rax
+call sym.imp.fread
+mov r8d, 0x7d2687a7
+mov r9d, 0x646e80e0
+movabs rcx, 0x552
+cmp rcx, rax
+setne r10b
+test r10b, r10b
+cmove r8d, r9d
+mov dword [rbp - 0xdcc], r8d
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x634174d8
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x5e8b1440
+jmp 0x555555557e72
+mov rax, qword [rbp - 0xdb0]
+add rax, 1
+mov qword [rbp - 0xdb0], rax
+mov dword [rbp - 0xdcc], 0x8677e368
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x7ed82ecf
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x8858d702
+jmp 0x555555557e72
+lea rdi, [rip + 0x92f]
+mov esi, dword [rbp - 0x558]
+mov al, 0
+call sym.imp.printf
+mov dword [rbp - 0xdcc], 0x634174d8
+mov dword [rbp - 0x1054], eax
+jmp 0x555555557e72
+mov dword [rbp - 0xdcc], 0x8c975028
+jmp 0x555555557e72
+mov rax, qword [rbp - 0xd98]
+add rax, 1
+mov qword [rbp - 0xd98], rax
+mov dword [rbp - 0xdcc], 0xc80a568f
+jmp 0x555555557e72
+lea rdi, [rip + 0x8ee]
+mov al, 0
+call sym.imp.printf
+mov dword [rbp - 0xdcc], 0xa6559cf3
+mov dword [rbp - 0x1058], eax
+jmp 0x555555557e72
+lea rdi, [rip + 0x8d2]
+mov rsi, qword [rbp - 0x788]
+mov al, 0
+call sym.imp.printf
+mov qword [rbp - 0xdb8], 0
+mov dword [rbp - 0xdcc], 0xa8c24480
+mov dword [rbp - 0x105c], eax
+jmp 0x555555557e72
+mov eax, 0x37ab9aa2
+mov ecx, 0xa2449c9f
+mov rdx, qword [rbp - 0xdb8]
+cmp rdx, qword [rbp - 0x788]
+setb sil
+test sil, sil
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+lea rdi, [rip + 0x87e]
+mov rsi, qword [rbp - 0xdb8]
+mov rax, qword [rbp - 0xdb8]
+mov rcx, qword [rbp - 0x778]
+mov rdx, qword [rcx + rax*8]
+mov al, 0
+call sym.imp.printf
+mov dword [rbp - 0xdcc], 0x8f394b97
+mov dword [rbp - 0x1060], eax
+jmp 0x555555557e72
+mov rax, qword [rbp - 0xdb8]
+add rax, 1
+mov qword [rbp - 0xdb8], rax
+mov dword [rbp - 0xdcc], 0xa8c24480
+jmp 0x555555557e72
+lea rdi, [rip + 0x82a]
+mov rsi, qword [rbp - 0x800]
+mov al, 0
+call sym.imp.printf
+mov qword [rbp - 0xdc0], 0
+mov dword [rbp - 0xdcc], 0xb57e5efd
+mov dword [rbp - 0x1064], eax
+jmp 0x555555557e72
+mov eax, 0xeaf0a3e1
+mov ecx, 0x2db3a2b5
+mov rdx, qword [rbp - 0xdc0]
+cmp rdx, qword [rbp - 0x800]
+setb sil
+test sil, sil
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+lea rdi, [rip + 0x7d5]
+mov rsi, qword [rbp - 0xdc0]
+mov rax, qword [rbp - 0xdc0]
+mov rcx, qword [rbp - 0x780]
+imul rax, rax, 0x120
+add rcx, rax
+mov rdx, qword [rcx + 0x48]
+mov rax, qword [rbp - 0xdc0]
+mov rcx, qword [rbp - 0x780]
+imul rax, rax, 0x120
+add rcx, rax
+mov rcx, qword [rcx + 0xa8]
+mov al, 0
+call sym.imp.printf
+mov dword [rbp - 0xdcc], 0x20ba543e
+mov dword [rbp - 0x1068], eax
+jmp 0x555555557e72
+mov rax, qword [rbp - 0xdc0]
+add rax, 1
+mov qword [rbp - 0xdc0], rax
+mov dword [rbp - 0xdcc], 0xb57e5efd
+jmp 0x555555557e72
+lea rdi, [rip + 0x778]
+mov rsi, qword [rbp - 0x770]
+mov al, 0
+call sym.imp.printf
+mov qword [rbp - 0xdc8], 0
+mov dword [rbp - 0xdcc], 0xf7b79bf5
+mov dword [rbp - 0x106c], eax
+jmp 0x555555557e72
+mov eax, 0x7be270c5
+mov ecx, 0x2af2177e
+mov rdx, qword [rbp - 0xdc8]
+cmp rdx, qword [rbp - 0x770]
+setb sil
+test sil, sil
+cmove eax, ecx
+mov dword [rbp - 0xdcc], eax
+jmp 0x555555557e72
+lea rdi, [rip + 0x725]
+mov rax, qword [rbp - 0xdc8]
+mov rcx, qword [rbp - section_end..symtab]
+imul rax, rax, 0x552
+add rcx, rax
+add rcx, 0x4c9
+mov rax, qword [rbp - 0xdc8]
+mov rdx, qword [rbp - section_end..symtab]
+imul rax, rax, 0x552
+add rdx, rax
+add rdx, 0x43
+mov rsi, rcx
+mov al, 0
+call sym.imp.printf
+mov dword [rbp - 0xdcc], 0x833e1e9a
+mov dword [rbp - 0x1070], eax
+jmp 0x555555557e72
+mov rax, qword [rbp - 0xdc8]
+add rax, 1
+mov qword [rbp - 0xdc8], rax
+mov dword [rbp - 0xdcc], 0xf7b79bf5
+jmp 0x555555557e72
+mov rax, qword [rip + 0x2011b7]
+mov rdi, qword [rax]
+call sym.imp.fflush
+mov dword [rbp - 0x1074], eax
+mov rsp, rbp
+pop rbp
+ret
+lea rdi, [rip + 0x68e]
+mov al, 0
+call sym.imp.printf
+mov dword [rbp - 0xdcc], 0xa6559cf3
+mov dword [rbp - 0x1078], eax
+jmp 0x5555555560a9
+'
+run_test
